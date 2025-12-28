@@ -4,6 +4,26 @@ import { Phone, Zap, Shield, Eye } from "lucide-react"
 import Link from "next/link"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "About TirePitStop | Edmonton's Trusted Mobile Tire Service Team",
+  description: "Learn about TirePitStop, Edmonton's premier mobile tire service. Professional, certified technicians providing 24/7 roadside assistance, tire replacement, and repair services throughout Edmonton, AB.",
+  keywords: [
+    "about tire service Edmonton",
+    "tire service company Edmonton",
+    "mobile tire technicians Edmonton",
+    "certified tire service Edmonton"
+  ],
+  openGraph: {
+    title: "About TirePitStop | Edmonton's Trusted Mobile Tire Service",
+    description: "Edmonton's premier mobile tire service with professional, certified technicians. 24/7 roadside assistance throughout Edmonton.",
+    url: "https://tirepitstop.ca/about",
+  },
+  alternates: {
+    canonical: "https://tirepitstop.ca/about",
+  },
+}
 
 export default function AboutPage() {
   return (

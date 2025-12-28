@@ -5,6 +5,28 @@ import { Phone, Menu, Clock, CheckCircle, Star, Shield } from "lucide-react"
 import Link from "next/link"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Mobile Tire Service Pricing in Edmonton | Transparent Rates & No Hidden Fees",
+  description: "Transparent pricing for mobile tire services in Edmonton. Tire replacement from $79, flat tire repair from $49, seasonal swap from $89, emergency service from $99. No hidden fees, upfront pricing.",
+  keywords: [
+    "tire service pricing Edmonton",
+    "mobile tire service cost Edmonton",
+    "tire replacement price Edmonton",
+    "flat tire repair cost Edmonton",
+    "tire service rates Edmonton",
+    "affordable tire service Edmonton"
+  ],
+  openGraph: {
+    title: "Mobile Tire Service Pricing in Edmonton | TirePitStop",
+    description: "Transparent pricing for mobile tire services. Tire replacement $79, flat repair $49, seasonal swap $89. No hidden fees.",
+    url: "https://tirepitstop.ca/pricing",
+  },
+  alternates: {
+    canonical: "https://tirepitstop.ca/pricing",
+  },
+}
 
 export default function PricingPage() {
   const pricingData = [

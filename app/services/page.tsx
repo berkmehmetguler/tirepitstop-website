@@ -5,6 +5,30 @@ import { Phone, Menu, Wrench, AlertTriangle, RotateCcw, Clock, Truck, CheckCircl
 import Link from "next/link"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Mobile Tire Services in Edmonton | Tire Replacement, Repair & Roadside Assistance",
+  description: "Complete mobile tire services in Edmonton: tire replacement, flat tire repair, seasonal tire swap, emergency roadside assistance, and fleet services. Professional technicians come to your location. 24/7 available.",
+  keywords: [
+    "tire replacement Edmonton",
+    "flat tire repair Edmonton",
+    "seasonal tire swap Edmonton",
+    "emergency tire service Edmonton",
+    "fleet tire service Edmonton",
+    "mobile tire services Edmonton",
+    "tire repair near me Edmonton",
+    "roadside tire assistance Edmonton"
+  ],
+  openGraph: {
+    title: "Mobile Tire Services in Edmonton | TirePitStop",
+    description: "Complete mobile tire services: replacement, repair, seasonal swap, emergency assistance. Professional technicians come to you in Edmonton.",
+    url: "https://tirepitstop.ca/services",
+  },
+  alternates: {
+    canonical: "https://tirepitstop.ca/services",
+  },
+}
 
 export default function ServicesPage() {
   const services = [

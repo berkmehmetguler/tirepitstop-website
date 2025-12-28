@@ -5,10 +5,160 @@ import Link from "next/link"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import WhatsappButton from "@/components/WhatsappButton"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Mobile Tire Service & Roadside Assistance in Edmonton, AB | 24/7 Available",
+  description: "Edmonton's #1 mobile tire service. Flat tire? Don't move - we'll come to YOU! 24/7 roadside assistance, tire replacement, flat tire repair, seasonal tire changes. Fast 30-minute response time across Edmonton. Certified technicians, transparent pricing.",
+  keywords: [
+    "mobile tire service Edmonton",
+    "roadside assistance Edmonton",
+    "flat tire repair Edmonton",
+    "emergency tire service Edmonton",
+    "tire replacement Edmonton",
+    "24/7 tire service Edmonton",
+    "mobile tire change Edmonton",
+    "tire service near me Edmonton",
+    "Edmonton tire repair",
+    "mobile tire technician Edmonton"
+  ],
+  openGraph: {
+    title: "Mobile Tire Service & Roadside Assistance in Edmonton, AB | TirePitStop",
+    description: "Flat tire? Don't move - we'll come to YOU! 24/7 mobile tire service in Edmonton. Fast response, certified technicians, transparent pricing.",
+    url: "https://tirepitstop.ca",
+    siteName: "TirePitStop",
+    images: [
+      {
+        url: "https://tirepitstop.ca/edmonton-city-street-with-mobile-tire-service-van.png",
+        width: 1200,
+        height: 630,
+        alt: "TirePitStop Mobile Tire Service Van in Edmonton",
+      },
+    ],
+    locale: "en_CA",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mobile Tire Service & Roadside Assistance in Edmonton, AB",
+    description: "Flat tire? We'll come to YOU! 24/7 mobile tire service in Edmonton. Fast response, certified technicians.",
+  },
+  alternates: {
+    canonical: "https://tirepitstop.ca",
+  },
+}
 
 export default function HomePage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://tirepitstop.ca",
+    "name": "TirePitStop",
+    "description": "Edmonton's premier mobile tire service providing 24/7 roadside assistance, tire replacement, flat tire repair, and seasonal tire changes throughout Edmonton, Alberta.",
+    "url": "https://tirepitstop.ca",
+    "telephone": "+17801234567",
+    "priceRange": "$$",
+    "image": "https://tirepitstop.ca/tirepitstop-technician-with-van-edmonton.png",
+    "logo": "https://tirepitstop.ca/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Edmonton",
+      "addressRegion": "AB",
+      "addressCountry": "CA",
+      "streetAddress": "Mobile Service - We Come To You"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "53.5461",
+      "longitude": "-113.4938"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Edmonton",
+      "sameAs": "https://en.wikipedia.org/wiki/Edmonton"
+    },
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "53.5461",
+        "longitude": "-113.4938"
+      },
+      "description": "Edmonton and surrounding areas"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Mobile Tire Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tire Replacement",
+            "description": "Professional mobile tire replacement service"
+          },
+          "price": "79",
+          "priceCurrency": "CAD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Flat Tire Repair",
+            "description": "Expert flat tire repair and patching service"
+          },
+          "price": "49",
+          "priceCurrency": "CAD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Seasonal Tire Swap",
+            "description": "Winter and summer tire change service"
+          },
+          "price": "89",
+          "priceCurrency": "CAD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Emergency Roadside Assistance",
+            "description": "24/7 emergency tire service and roadside assistance"
+          },
+          "price": "99",
+          "priceCurrency": "CAD"
+        }
+      ]
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "127",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "sameAs": [
+      "https://www.facebook.com/tirepitstop",
+      "https://www.instagram.com/tirepitstop"
+    ]
+  }
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <WhatsappButton />
 
