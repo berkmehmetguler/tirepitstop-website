@@ -1,42 +1,39 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tirepitstop.ca";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://pitstoptire.netlify.app";
+const ogImageUrl = `${siteUrl}/og-image.jpg`;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#171717",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "TirePitStop - Mobile Tire Service & Roadside Assistance in Edmonton, AB",
-    template: "%s | TirePitStop Edmonton"
+    default: "PitStop Tire | Mobile Tire Service Edmonton",
+    template: "%s | PitStop Tire",
   },
-  description: "Edmonton's #1 mobile tire service. 24/7 roadside assistance, tire replacement, flat tire repair, and seasonal tire changes. We come to you anywhere in Edmonton, AB. Fast response, certified technicians, transparent pricing.",
+  description:
+    "Fast and professional mobile tire service in Edmonton, Sherwood Park and Spruce Grove. Flat tire repair, tire change and emergency tire services near you.",
   keywords: [
-    "mobile tire service Edmonton",
-    "roadside assistance Edmonton",
-    "tire replacement Edmonton",
-    "flat tire repair Edmonton",
-    "emergency tire service Edmonton",
-    "mobile tire change Edmonton",
-    "tire repair Edmonton",
-    "seasonal tire swap Edmonton",
-    "24/7 tire service Edmonton",
-    "tire service near me Edmonton",
-    "mobile tire technician Edmonton",
-    "roadside tire service Edmonton",
-    "tire installation Edmonton",
-    "winter tire change Edmonton",
-    "summer tire change Edmonton",
-    "fleet tire service Edmonton",
-    "commercial tire service Edmonton",
-    "TirePitStop",
-    "Edmonton tire service",
-    "Alberta mobile tire service"
+    "mobile tire service edmonton",
+    "flat tire repair edmonton",
+    "mobile tire service near me",
+    "mobile tire service sherwood park",
+    "mobile tire services",
+    "mobile tire service spruce grove",
+    "tire repair",
+    "mobile tire change",
   ],
-  authors: [{ name: "TirePitStop", url: siteUrl }],
-  creator: "TirePitStop",
-  publisher: "TirePitStop",
+  authors: [{ name: "PitStop Tire", url: siteUrl }],
+  creator: "PitStop Tire",
+  publisher: "PitStop Tire",
   robots: {
     index: true,
     follow: true,
@@ -52,35 +49,69 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_CA",
     url: siteUrl,
-    siteName: "TirePitStop",
-    title: "TirePitStop - Mobile Tire Service & Roadside Assistance in Edmonton, AB",
-    description: "Edmonton's trusted mobile tire service. 24/7 roadside assistance, tire replacement, flat tire repair, and seasonal tire changes. Fast response, certified technicians, we come to you!",
+    siteName: "PitStop Tire",
+    title: "PitStop Tire | Mobile Tire Service Edmonton",
+    description:
+      "Fast and professional mobile tire service in Edmonton, Sherwood Park and Spruce Grove. Flat tire repair, tire change and emergency tire services near you.",
     images: [
       {
-        url: `${siteUrl}/tirepitstop-technician-with-van-edmonton.png`,
+        url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "TirePitStop Mobile Tire Service in Edmonton",
+        alt: "PitStop Tire - Mobile Tire Service Edmonton, Sherwood Park, Spruce Grove",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "TirePitStop - Mobile Tire Service in Edmonton, AB",
-    description: "24/7 mobile tire service & roadside assistance in Edmonton. We come to you! Fast, professional, certified technicians.",
-    images: [`${siteUrl}/tirepitstop-technician-with-van-edmonton.png`],
+    title: "PitStop Tire | Mobile Tire Service Edmonton",
+    description:
+      "Fast and professional mobile tire service in Edmonton, Sherwood Park and Spruce Grove. Flat tire repair, tire change and emergency tire services near you.",
+    images: [ogImageUrl],
   },
   alternates: {
     canonical: siteUrl,
   },
   category: "Automotive Services",
   classification: "Mobile Tire Service",
+  icons: {
+    icon: [
+      { url: "/logo.png", type: "image/png", sizes: "32x32" },
+      { url: "/logo.png", type: "image/png", sizes: "192x192" },
+    ],
+  },
   other: {
     "geo.region": "CA-AB",
     "geo.placename": "Edmonton",
     "geo.position": "53.5461;-113.4938",
-    "ICBM": "53.5461, -113.4938",
+    ICBM: "53.5461, -113.4938",
   },
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "TireShop",
+  "@id": `${siteUrl}/#organization`,
+  name: "PitStop Tire",
+  description:
+    "Fast and professional mobile tire service in Edmonton, Sherwood Park and Spruce Grove. Flat tire repair, tire change and emergency tire services near you.",
+  url: siteUrl,
+  areaServed: [
+    { "@type": "City", name: "Edmonton", containedInPlace: { "@type": "Province", name: "Alberta" } },
+    { "@type": "City", name: "Sherwood Park", containedInPlace: { "@type": "Province", name: "Alberta" } },
+    { "@type": "City", name: "Spruce Grove", containedInPlace: { "@type": "Province", name: "Alberta" } },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Tire services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile tire service" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Flat tire repair" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Tire change" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Emergency tire services" } },
+    ],
+  },
+  serviceType: "Tire Service",
 };
 
 export default function RootLayout({
@@ -91,7 +122,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
       </head>
       <body>{children}</body>
     </html>
