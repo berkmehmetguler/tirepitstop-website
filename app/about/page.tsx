@@ -40,34 +40,35 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Main Story Section */}
-      <section className="py-16 px-4 ">
-        <div className="container mx-auto max-w-4xl">
+      {/* Main Story Section - header ile aynı hizada: container mx-auto px-4 */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-6 text-foreground">Our Story</h2>
               <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  Founded in Edmonton, TirePitStop was built on one simple mission: to bring the garage to your
-                  doorstep. Instead of waiting hours for a tow truck or searching for a tire shop, we drive directly to
-                  you – anywhere in Edmonton.
+                  Founded in Edmonton, TirePitStop was built on one simple mission: to bring professional tire service to your
+                  doorstep. Whether you need a tire change, flat tire repair, or full tire replacement, we drive directly to
+                  you – anywhere in Edmonton. No more waiting for a tow or hunting for a tire shop.
                 </p>
                 <p>
-                  We understand that tire emergencies don't happen at convenient times. That's why we've built a service
-                  that comes to you, whether you're stuck on the Whitemud Freeway during rush hour or in your driveway
-                  on a Sunday morning.
+                  A flat tire can happen anytime. We understand that tire emergencies don't wait for business hours. Our mobile
+                  tire service comes to you – whether you're stuck on the Whitemud during rush hour or in your driveway on a
+                  Sunday morning. One call and our team is on the way for tire change and replacement when you need it most.
                 </p>
                 <p>
-                  Our team of certified technicians brings professional-grade equipment and expertise right to your
-                  location, getting you back on the road safely and quickly.
+                  Our certified technicians bring a full mobile workshop to your location: tire change and balancing equipment,
+                  replacement tires when needed, and the expertise to handle any flat tire or tire repair across Edmonton.
+                  We get you back on the road safely and quickly.
                 </p>
               </div>
             </div>
 
             <div className="relative">
               <img
-                src="/tirepitstop-technician-with-van-edmonton.png"
-                alt="TirePitStop technician with mobile service van in Edmonton"
+                src="/hero-workshop.png"
+                alt="TirePitStop mobile tire workshop – tire change and flat tire service in Edmonton"
                 className="rounded-lg shadow-lg w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-lg"></div>
@@ -166,8 +167,8 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-12">
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-3" asChild>
-              <Link href="/services">See Our Services</Link>
+            <Button size="lg" className="bg-accent hover:bg-accent/90 text-white text-lg px-8 py-3" asChild>
+              <Link href="/services" className="text-white">See Our Services</Link>
             </Button>
           </div>
         </div>
@@ -192,10 +193,10 @@ export default function AboutPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent text-lg px-8 py-3 bg-transparent"
+              className="border-white text-white hover:bg-white hover:text-accent text-lg px-8 py-3 bg-transparent"
               asChild
             >
-              <a href="tel:+17801234567">
+              <a href="tel:+16474512391" className="text-white">
                 <Phone className="w-5 h-5 mr-2" />
                 Call Us Today
               </a>

@@ -8,10 +8,77 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Phone, MapPin, Car, Calendar, Clock, AlertTriangle, CheckCircle } from "lucide-react"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { Phone, MapPin, Car, Calendar, Clock, AlertTriangle, CheckCircle, MessageCircle } from "lucide-react"
 import { useState } from "react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+
+const WHATSAPP_NUMBER = "16474512391"
+
+function buildWhatsAppMessage(booking: {
+  id: string
+  contactName: string
+  phone: string
+  email: string
+  location: string
+  vehicleYear: string
+  vehicleMake: string
+  vehicleModel: string
+  rimSize: string
+  serviceType: string
+  preferredDate: string
+  preferredTime: string
+  amount: string
+  additionalNotes: string
+}) {
+  const serviceLabels: Record<string, string> = {
+    "tire-replacement": "Tire Replacement",
+    "tire-repair": "Tire Repair",
+    "seasonal-swap": "Seasonal Tire Swap",
+    emergency: "Emergency Service",
+    fleet: "Fleet Service",
+    other: "Other",
+  }
+  const timeLabels: Record<string, string> = {
+    morning: "Morning (8 AM - 12 PM)",
+    afternoon: "Afternoon (12 PM - 5 PM)",
+    evening: "Evening (5 PM - 8 PM)",
+    asap: "ASAP (Emergency)",
+  }
+  const lines = [
+    "🛞 *New Booking Request*",
+    "",
+    `*ID:* ${booking.id}`,
+    "",
+    "*Contact*",
+    `Name: ${booking.contactName}`,
+    `Phone: ${booking.phone}`,
+    `Email: ${booking.email}`,
+    "",
+    "*Vehicle*",
+    `${booking.vehicleYear} ${booking.vehicleMake} ${booking.vehicleModel}`,
+    `Rim: ${booking.rimSize || "—"}`,
+    "",
+    "*Service*",
+    `${serviceLabels[booking.serviceType] || booking.serviceType} - ${booking.amount}`,
+    `Date: ${booking.preferredDate}`,
+    `Time: ${timeLabels[booking.preferredTime] || booking.preferredTime}`,
+    "",
+    "*Location:*",
+    booking.location,
+  ]
+  if (booking.additionalNotes?.trim()) {
+    lines.push("", "*Notes:*", booking.additionalNotes)
+  }
+  return lines.join("\n")
+}
 
 export default function BookingPage() {
   const [formData, setFormData] = useState({
@@ -19,6 +86,7 @@ export default function BookingPage() {
     vehicleMake: "",
     vehicleModel: "",
     vehicleYear: "",
+    rimSize: "",
     serviceType: "",
     preferredDate: "",
     preferredTime: "",
@@ -29,6 +97,9 @@ export default function BookingPage() {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false)
+  const [successBookingId, setSuccessBookingId] = useState("")
+  const [successWhatsAppUrl, setSuccessWhatsAppUrl] = useState("")
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -55,10 +126,11 @@ export default function BookingPage() {
     existingBookings.push(booking)
     localStorage.setItem("bookings", JSON.stringify(existingBookings))
 
-    console.log("Booking submitted:", booking)
-    alert(
-      `Booking request submitted successfully! Your booking ID is ${bookingId}. We'll contact you shortly to confirm.`,
-    )
+    // Build WhatsApp URL and open so customer can send booking to us
+    const message = buildWhatsAppMessage(booking)
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
+    setSuccessWhatsAppUrl(waUrl)
+    window.open(waUrl, "_blank", "noopener,noreferrer")
 
     // Reset form
     setFormData({
@@ -66,6 +138,7 @@ export default function BookingPage() {
       vehicleMake: "",
       vehicleModel: "",
       vehicleYear: "",
+      rimSize: "",
       serviceType: "",
       preferredDate: "",
       preferredTime: "",
@@ -76,6 +149,8 @@ export default function BookingPage() {
     })
 
     setIsSubmitting(false)
+    setSuccessBookingId(bookingId)
+    setShowSuccessDialog(true)
   }
 
   const getServiceAmount = (serviceType: string) => {
@@ -183,6 +258,17 @@ export default function BookingPage() {
                           />
                         </div>
                       </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="rimSize">Rim Size (Wheel Size) *</Label>
+                        <Input
+                          id="rimSize"
+                          placeholder='e.g., 17", 18", 19"'
+                          value={formData.rimSize}
+                          onChange={(e) => handleInputChange("rimSize", e.target.value)}
+                          required
+                        />
+                      </div>
                     </div>
 
                     {/* Service Type */}
@@ -260,7 +346,7 @@ export default function BookingPage() {
                           <Input
                             id="phone"
                             type="tel"
-                            placeholder="(780) 123-4567"
+                            placeholder="+1 647-451-2391"
                             value={formData.phone}
                             onChange={(e) => handleInputChange("phone", e.target.value)}
                             required
@@ -297,7 +383,7 @@ export default function BookingPage() {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-accent hover:bg-accent/90 text-accent-foreground text-lg py-3"
+                      className="w-full bg-accent hover:bg-accent/90 text-white text-lg py-3"
                       disabled={isSubmitting}
                     >
                       <CheckCircle className="w-5 h-5 mr-2" />
@@ -306,6 +392,50 @@ export default function BookingPage() {
                   </form>
                 </CardContent>
               </Card>
+
+            {/* Success Dialog */}
+            <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+              <DialogContent className="sm:max-w-md text-center">
+                <DialogHeader>
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+                    <CheckCircle className="h-10 w-10 text-green-600" />
+                  </div>
+                  <DialogTitle className="text-xl">Booking Received!</DialogTitle>
+                  <DialogDescription className="text-base">
+                    Your service request has been submitted successfully. We'll contact you shortly to confirm your
+                    appointment.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="rounded-lg bg-muted/50 px-4 py-3">
+                  <p className="text-sm text-muted-foreground">Your booking ID</p>
+                  <p className="text-lg font-semibold tracking-wide text-foreground">{successBookingId}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">Please save this ID for reference.</p>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  A WhatsApp window should have opened with your booking details. Send the message to notify us.
+                </p>
+                <div className="flex flex-col gap-2">
+                  {successWhatsAppUrl && (
+                    <Button
+                      variant="outline"
+                      className="w-full border-green-600 text-green-700 hover:bg-green-50"
+                      asChild
+                    >
+                      <a href={successWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                        <MessageCircle className="w-4 h-4 mr-2" />
+                        Open WhatsApp again
+                      </a>
+                    </Button>
+                  )}
+                  <Button
+                    className="w-full"
+                    onClick={() => setShowSuccessDialog(false)}
+                  >
+                    Done
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
             </div>
 
             {/* Sidebar */}
@@ -323,9 +453,9 @@ export default function BookingPage() {
                     For immediate roadside assistance, call us directly:
                   </p>
                   <Button size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
-                    <a href="tel:+1234567890">
+                    <a href="tel:+16474512391">
                       <Phone className="w-5 h-5 mr-2" />
-                      (780) 123-4567
+                      +1 647-451-2391
                     </a>
                   </Button>
                   <p className="text-xs text-muted-foreground mt-2 text-center">Available 24/7 for emergencies</p>

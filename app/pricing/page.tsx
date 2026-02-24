@@ -73,9 +73,9 @@ export default function PricingPage() {
       <Header />
 
 
-      {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-16 px-4">
-        <div className="container mx-auto text-center max-w-4xl">
+      {/* Hero Section - header ile aynı hizada */}
+      <section className="bg-primary text-primary-foreground py-16">
+        <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Transparent Pricing</h1>
           <p className="text-xl text-primary-foreground/90 leading-relaxed mb-4">
             Upfront pricing with no hidden fees or surprises
@@ -87,9 +87,9 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Main Pricing Table */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-6xl">
+      {/* Main Pricing Table - header ile aynı hizada */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Service Pricing</h2>
             <p className="text-lg text-muted-foreground">
@@ -112,7 +112,7 @@ export default function PricingPage() {
               {pricingData.map((item, index) => (
                 <div key={index} className="p-4 hover:bg-muted/30 transition-colors relative">
                   {item.popular && (
-                    <Badge className="absolute -top-2 left-4 bg-accent text-accent-foreground text-xs">
+                    <Badge className="absolute -top-2 left-4 bg-accent text-white text-xs">
                       Most Popular
                     </Badge>
                   )}
@@ -131,8 +131,8 @@ export default function PricingPage() {
                       </div>
                     </div>
                     <div className="text-center">
-                      <Button size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
-                        <Link href="/book">Book Now</Link>
+                      <Button size="sm" className="bg-accent hover:bg-accent/90 text-white" asChild>
+                        <Link href="/book" className="text-white">Book Now</Link>
                       </Button>
                     </div>
                   </div>
@@ -162,8 +162,8 @@ export default function PricingPage() {
                       {item.duration}
                     </div>
                   </div>
-                  <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
-                    <Link href="/book">Book Service</Link>
+                  <Button className="w-full bg-accent hover:bg-accent/90 text-white" asChild>
+                    <Link href="/book" className="text-white">Book Service</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -172,9 +172,9 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Additional Services */}
-      <section className="py-16 px-4 bg-muted/30">
-        <div className="container mx-auto max-w-4xl">
+      {/* Additional Services - header ile aynı hizada */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Additional Services</h2>
             <p className="text-lg text-muted-foreground">Complete tire care solutions for every need</p>
@@ -199,9 +199,9 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Pricing Features */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-5xl">
+      {/* Pricing Features - header ile aynı hizada */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">What's Included</h2>
             <p className="text-lg text-muted-foreground">
@@ -249,16 +249,18 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Fleet Pricing */}
-      <section className="py-16 px-4 bg-primary text-primary-foreground">
-        <div className="container mx-auto text-center max-w-4xl">
-          <h2 className="text-3xl font-bold mb-6">Fleet & Business Pricing</h2>
-          <p className="text-xl text-primary-foreground/90 mb-8">
-            Special rates and priority service for businesses and commercial vehicles
-          </p>
+      {/* Fleet Pricing - header ile aynı hizada */}
+      <section className="py-16 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold mb-4">Fleet & Business Pricing</h2>
+            <p className="text-xl text-primary-foreground/90">
+              Special rates and priority service for businesses and commercial vehicles
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-8 text-left">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 text-left">
+            <div className="w-full min-w-0">
               <h3 className="text-xl font-semibold mb-4">Fleet Benefits</h3>
               <ul className="space-y-2 text-primary-foreground/80">
                 <li className="flex items-center">
@@ -280,29 +282,44 @@ export default function PricingPage() {
               </ul>
             </div>
 
-            <div>
+            <div className="w-full min-w-0">
               <h3 className="text-xl font-semibold mb-4">Perfect For</h3>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li>• Delivery companies</li>
-                <li>• Construction fleets</li>
-                <li>• Transportation services</li>
-                <li>• Government vehicles</li>
-                <li>• Corporate car fleets</li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 mr-2 text-accent shrink-0" />
+                  Delivery companies
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 mr-2 text-accent shrink-0" />
+                  Construction fleets
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 mr-2 text-accent shrink-0" />
+                  Transportation services
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 mr-2 text-accent shrink-0" />
+                  Government vehicles
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-4 h-4 mr-2 text-accent shrink-0" />
+                  Corporate car fleets
+                </li>
               </ul>
             </div>
           </div>
 
-          <div className="mt-8">
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-3" asChild>
-              <Link href="/contact">Get Fleet Quote</Link>
+          <div className="mt-10 text-center">
+            <Button size="lg" className="bg-accent hover:bg-accent/90 text-white text-lg px-8 py-3" asChild>
+              <Link href="/contact" className="text-white">Get Fleet Quote</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 px-4 bg-accent text-accent-foreground">
-        <div className="container mx-auto text-center max-w-3xl">
+      {/* CTA Section - header ile aynı hizada */}
+      <section className="py-16 bg-accent text-accent-foreground">
+        <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Book Your Service?</h2>
           <p className="text-xl text-accent-foreground/90 mb-8">
             Get professional tire service at transparent prices. No surprises, just quality work.
@@ -319,10 +336,10 @@ export default function PricingPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent text-lg px-8 py-3 bg-transparent"
+              className="border-white text-white hover:bg-white hover:text-accent text-lg px-8 py-3 bg-transparent"
               asChild
             >
-              <a href="tel:+1234567890">
+              <a href="tel:+16474512391" className="text-white">
                 <Phone className="w-5 h-5 mr-2" />
                 Call for Quote
               </a>

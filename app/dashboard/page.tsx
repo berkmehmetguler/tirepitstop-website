@@ -48,6 +48,7 @@ interface Booking {
   vehicleMake: string
   vehicleModel: string
   vehicleYear: string
+  rimSize?: string
   serviceType: string
   preferredDate: string
   preferredTime: string
@@ -68,6 +69,7 @@ const sampleBookings: Booking[] = [
     vehicleMake: "Toyota",
     vehicleModel: "Camry",
     vehicleYear: "2020",
+    rimSize: "17\"",
     serviceType: "tire-replacement",
     preferredDate: "2025-01-15",
     preferredTime: "morning",
@@ -85,6 +87,7 @@ const sampleBookings: Booking[] = [
     vehicleMake: "Honda",
     vehicleModel: "Civic",
     vehicleYear: "2019",
+    rimSize: "16\"",
     serviceType: "tire-repair",
     preferredDate: "2025-01-15",
     preferredTime: "afternoon",
@@ -529,6 +532,9 @@ export default function DashboardPage() {
                         <div className="flex items-center text-sm">
                           <Car className="w-3 h-3 mr-1 text-muted-foreground" />
                           {booking.vehicleYear} {booking.vehicleMake} {booking.vehicleModel}
+                          {booking.rimSize && (
+                            <span className="text-muted-foreground ml-1">· {booking.rimSize}</span>
+                          )}
                         </div>
                       </TableCell>
                       <TableCell>{getServiceName(booking.serviceType)}</TableCell>
@@ -628,6 +634,11 @@ export default function DashboardPage() {
                         <strong>Vehicle:</strong> {selectedBooking.vehicleYear} {selectedBooking.vehicleMake}{" "}
                         {selectedBooking.vehicleModel}
                       </p>
+                      {selectedBooking.rimSize && (
+                        <p>
+                          <strong>Rim Size (Jant):</strong> {selectedBooking.rimSize}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>

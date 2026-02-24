@@ -89,9 +89,9 @@ export default function ServicesPage() {
       {/* Header */}
       <Header />
 
-      {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-16 px-4">
-        <div className="container mx-auto text-center max-w-4xl">
+      {/* Hero Section - header ile aynı hizada */}
+      <section className="bg-primary text-primary-foreground py-16">
+        <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
           <p className="text-xl text-primary-foreground/90 leading-relaxed">
             Professional mobile tire services delivered directly to your location in Edmonton
@@ -99,9 +99,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto">
+      {/* Services Grid - header ile aynı hizada */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Complete Tire Solutions</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -149,8 +149,8 @@ export default function ServicesPage() {
                     </ul>
                   </div>
 
-                  <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
-                    <Link href="/book">Book Service</Link>
+                  <Button className="w-full bg-accent hover:bg-accent/90 text-white" asChild>
+                    <Link href="/book" className="text-white">Book Service</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -159,9 +159,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-16 px-4 bg-muted/30">
-        <div className="container mx-auto">
+      {/* Why Choose Us Section - header ile aynı hizada */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Why Choose TirePitStop?</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -205,9 +205,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Service Areas */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto text-center max-w-4xl">
+      {/* Service Areas - header ile aynı hizada */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Service Areas</h2>
           <p className="text-lg text-muted-foreground mb-8">
             We proudly serve all areas of Edmonton and surrounding communities
@@ -247,8 +247,8 @@ export default function ServicesPage() {
 
           <div className="mt-8">
             <p className="text-muted-foreground mb-4">Don't see your area listed? Give us a call!</p>
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
-              <a href="tel:+1234567890">
+            <Button size="lg" className="bg-accent hover:bg-accent/90 text-white" asChild>
+              <a href="tel:+16474512391" className="text-white">
                 <Phone className="w-5 h-5 mr-2" />
                 Check Service Availability
               </a>
@@ -257,9 +257,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 px-4 bg-accent text-accent-foreground">
-        <div className="container mx-auto text-center max-w-3xl">
+      {/* CTA Section - header ile aynı hizada */}
+      <section className="py-16 bg-accent text-accent-foreground">
+        <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Get Back on the Road?</h2>
           <p className="text-xl text-accent-foreground/90 mb-8">
             Don't let tire problems slow you down. Book your service now or call for immediate assistance.
@@ -276,10 +276,10 @@ export default function ServicesPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent text-lg px-8 py-3 bg-transparent"
+              className="border-white text-white hover:bg-white hover:text-accent text-lg px-8 py-3 bg-transparent"
               asChild
             >
-              <a href="tel:+1234567890">
+              <a href="tel:+16474512391" className="text-white">
                 <Phone className="w-5 h-5 mr-2" />
                 Call for Emergency
               </a>

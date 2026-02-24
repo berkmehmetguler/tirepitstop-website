@@ -5,6 +5,7 @@ import Link from "next/link"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import WhatsappButton from "@/components/WhatsappButton"
+import HeroSlider from "@/components/HeroSlider"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -56,7 +57,7 @@ export default function HomePage() {
     "name": "TirePitStop",
     "description": "Edmonton's premier mobile tire service providing 24/7 roadside assistance, tire replacement, flat tire repair, and seasonal tire changes throughout Edmonton, Alberta.",
     "url": "https://tirepitstop.ca",
-    "telephone": "+17801234567",
+    "telephone": "+16474512391",
     "priceRange": "$$",
     "image": "https://tirepitstop.ca/tirepitstop-technician-with-van-edmonton.png",
     "logo": "https://tirepitstop.ca/logo.png",
@@ -162,43 +163,7 @@ export default function HomePage() {
       <Header />
       <WhatsappButton />
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary to-primary/90 text-primary-foreground py-20 px-4">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: `url('/edmonton-city-street-with-mobile-tire-service-van.png')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        ></div>
-
-        <div className="relative container mx-auto text-center max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Flat tire? Don't move.
-            <br />
-            <span className="text-accent">We'll come to YOU.</span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90">
-            Serving Edmonton 24/7 with fast, reliable mobile tire services.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-3" asChild>
-              <Link href="/book">Book Now</Link>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary text-lg px-8 py-3 bg-transparent"
-              asChild
-            >
-              <Link href="/services">See Services</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <HeroSlider />
 
       {/* Quick Info Cards */}
       <section className="py-16 px-4 bg-muted/30">
@@ -247,13 +212,11 @@ export default function HomePage() {
           <p className="text-lg text-muted-foreground mb-8">
             Currently providing mobile tire services throughout Edmonton and surrounding communities.
           </p>
-
-          {/* Mini Map Placeholder */}
           <div className="bg-muted rounded-lg p-8 mb-6">
             <div
               className="w-full h-64 bg-primary/5 rounded-lg flex items-center justify-center"
               style={{
-                backgroundImage: `url('/edmonton-map-with-service-area-highlighted.png')`,
+                backgroundImage: "url('/edmonton-map-with-service-area-highlighted.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -264,18 +227,17 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-
-          <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
+          <Button size="lg" className="bg-accent hover:bg-accent/90 text-white" asChild>
             <Link href="/book">Get Help Now</Link>
           </Button>
         </div>
       </section>
 
       {/* Emergency CTA */}
-      <section className="bg-accent text-accent-foreground py-12 px-4">
+      <section className="bg-accent text-white py-12 px-4">
         <div className="container mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Need Emergency Tire Service Right Now?</h2>
-          <p className="text-lg mb-6 text-accent-foreground/90">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">Need Emergency Tire Service Right Now?</h2>
+          <p className="text-base sm:text-lg mb-6 text-white/90">
             Don't wait - we're available 24/7 for roadside emergencies
           </p>
           <Button
@@ -284,7 +246,7 @@ export default function HomePage() {
             className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-3"
             asChild
           >
-            <a href="tel:+17801234567">
+            <a href="tel:+16474512391">
               <Phone className="w-5 h-5 mr-2" />
               Call Emergency Line
             </a>

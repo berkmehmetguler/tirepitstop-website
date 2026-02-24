@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container mx-auto">
         <div className="text-center mb-8">
           <Link href="/" className="text-3xl font-bold">
-          <Image src="/logo.png" alt="v0 Logo" width={250} height={50} className="object-contain shadow-md mx-auto mb-10" />
+          <Image src="/logo.png" alt="Pit Stop - Mobile Tire Service" width={320} height={80} className="object-contain h-16 sm:h-20 md:h-24 w-auto mx-auto mb-10" />
           </Link>
           <p className="text-lg text-primary-foreground/80">Edmonton's fastest roadside tire rescue</p>
         </div>
@@ -34,8 +34,12 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-3">Contact Info</h4>
             <div className="space-y-2">
-              <p>📞 (780) 123-4567</p>
-              <p>✉️ info@tirepitstop.ca</p>
+              <p>
+                <a href="tel:+16474512391" className="hover:text-accent transition-colors">📞 +1 647-451-2391</a>
+              </p>
+              <p>
+                <a href="mailto:umutcemkabak@gmail.com" className="hover:text-accent transition-colors">✉️ umutcemkabak@gmail.com</a>
+              </p>
               <p>📍 Edmonton, AB</p>
             </div>
           </div>

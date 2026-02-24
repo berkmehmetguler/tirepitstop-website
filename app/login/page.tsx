@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Eye, EyeOff, Lock, User } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function LoginPage() {
   const [username, setUsername] = useState("")
@@ -45,9 +46,9 @@ export default function LoginPage() {
         {/* Logo and Title */}
         <div className="text-center mb-8">
           <Link href="/" className="text-3xl font-bold text-primary">
-            🚐 TirePitStop
+            <Image src="/logo.png" alt="Pit Stop - Mobile Tire Service" width={280} height={72} className="object-contain h-16 sm:h-24 md:h-26 lg:h-28 w-auto min-h-[5rem] mx-auto shrink-0" priority />
           </Link>
-          <p className="text-muted-foreground mt-2">Admin Dashboard Access</p>
+          <p className="text-muted-foreground text-center text-md sm:text-lg font-medium mt-2">Admin Dashboard Access</p>
         </div>
 
         <Card className="shadow-lg">
@@ -113,6 +114,8 @@ export default function LoginPage() {
               </Button>
             </form>
 
+            {/* Demo login credentials for development or demo use */}
+            {/* 
             <div className="mt-6 text-center text-sm text-muted-foreground">
               <p>Demo credentials:</p>
               <p className="font-mono text-xs bg-muted p-2 rounded mt-1">
@@ -121,6 +124,7 @@ export default function LoginPage() {
                 Password: tirepitstop2025
               </p>
             </div>
+            */}
 
             <div className="mt-4 text-center">
               <Link href="/" className="text-sm text-primary hover:text-primary/80 transition-colors">
